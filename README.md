@@ -23,6 +23,7 @@ docker run -d \
 -p 6099:6099 \
 --name napcat \
 --restart=always \
+-v $(pwd)/napcat/config:/app/napcat/config \
 mlikiowa/napcat-docker:latest
 ```
 
@@ -48,6 +49,8 @@ services:
             - 3001:3001
             - 6099:6099
         container_name: napcat
+        volumes:
+            - ./napcat/config:/app/napcat/config
         network_mode: bridge
         restart: always
         image: mlikiowa/napcat-docker:latest
